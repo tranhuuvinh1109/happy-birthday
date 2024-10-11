@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Container from "../Container";
 const Layout = () => {
   return (
-    <div className="h-full w-full bg-gray-950 font-montserrat text-white">
+    <div className="text-back h-screen w-full overflow-x-hidden bg-white  font-montserrat">
       <Container>
         <Outlet />
       </Container>
