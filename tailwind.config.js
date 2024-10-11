@@ -8,6 +8,7 @@ export default {
         whiteSmoke40: "#f5f5f514",
         overlay: "rgba(71,85,105, 0.18)",
         overlay80: "rgba(0,0,0, 0.8)",
+        overlay60: "rgba(0,0,0, 0.6)",
         borderPrimary: "#2C2B2C",
       },
       fontFamily: {
