@@ -21,7 +21,7 @@ const AudioPlayer: React.FC = () => {
       className={`fixed bottom-0 left-0 right-0 top-0 bg-transparent ${isHidden ? "-z-10" : "z-50"}`}
       onClick={togglePlay}
     >
-      <audio ref={audioRef} src="src/assets/music/HappyBirthdayToYou.mp3" preload="auto" onEnded={handleEnded} />
+      <audio ref={audioRef} src="/HappyBirthdayToYou.mp3" preload="auto" onEnded={handleEnded} />
     </div>
   );
 };
