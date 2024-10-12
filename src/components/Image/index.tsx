@@ -47,7 +47,7 @@ const Image = () => {
   return (
     <>
       <div>{renderImage}</div>
-      <Modal isOpen={isOpen} className="min-h-[550px] max-w-full sm:max-w-[400px]" onClose={handleClose}>
+      <Modal isOpen={isOpen} className="min-h-[550px] max-w-full" onClose={handleClose}>
         <div className="py-4">
           <img
             src={itemSelected?.image}

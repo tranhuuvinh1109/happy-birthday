@@ -3,8 +3,27 @@ import Container from "../../components/Container";
 import Firework from "../../components/Firework";
 import Image from "../../components/Image";
 import bg from "../../assets/images/bg.png";
+import Confirm from "../../components/Confirm";
+import { useRef, useState } from "react";
 
 const HomePage = () => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const [isHidden, setIsHidden] = useState(false);
+
+  const togglePlay = () => {
+    if (audioRef.current && !isHidden) {
+      audioRef.current.play();
+      setIsHidden(true);
+    }
+  };
+
+  const handleEnded = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
+
   return (
     <div className=" text-black">
       <Container>
@@ -14,7 +33,8 @@ const HomePage = () => {
             <h1 className="text-2xl font-semibold ">Nguyễn Ngọc Bích Trâm</h1>
           </div>
           <Image />
-          <AudioPlayer />
+          <AudioPlayer isHidden={isHidden} ref={audioRef} onClick={togglePlay} onEnded={handleEnded} />
+          <Confirm onClick={togglePlay} />
           <Firework />
         </div>
       </Container>
