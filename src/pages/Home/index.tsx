@@ -5,6 +5,7 @@ import Image from "../../components/Image";
 import bg from "../../assets/images/bg.png";
 import Confirm from "../../components/Confirm";
 import { useRef, useState } from "react";
+import { IS_OPEN } from "../../constant/common";
 
 const HomePage = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -32,7 +33,14 @@ const HomePage = () => {
             <img src={bg} alt="bg" className="w-1/2 max-w-[100px] sm:max-w-[120px]" />
             <h1 className="text-2xl font-semibold ">Nguyễn Ngọc Bích Trâm</h1>
           </div>
-          <Image />
+          {IS_OPEN ? (
+            <Image />
+          ) : (
+            <div>
+              <h1 className="text-center text-xl">Chưa tới ngày nên mình chưa mở cho bạn xem đâu hihi</h1>
+            </div>
+          )}
+
           <AudioPlayer isHidden={isHidden} ref={audioRef} onClick={togglePlay} onEnded={handleEnded} />
           <Confirm onClick={togglePlay} />
           <Firework />

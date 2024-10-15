@@ -13,6 +13,9 @@ import baby10 from "../assets/images/baby10.jpg";
 import baby11 from "../assets/images/baby11.jpg";
 import baby12 from "../assets/images/baby12.jpg";
 
+
+export const IS_OPEN = false
+
 export const ImageList: SlideItemType[] = [
   {
     image: baby1,
