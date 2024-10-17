@@ -2,10 +2,12 @@ import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import { db, setDataToFirebase, uploadImageToFirebase } from "../../provider/Firebase";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import { FaTimes } from "react-icons/fa";
 import bg from "../../assets/images/iphone1.png";
 import Loading from "../../components/Loading";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const AdminPage = () => {
   const [isShowForm, setIsShowForm] = useState(false);
@@ -46,6 +48,7 @@ const AdminPage = () => {
       const res = await uploadImageToFirebase(file, "mylove");
       if (res) {
         setProgress(100);
+        handleClearFile();
         toast.success(`Upload ${file.name} successfully`);
       } else {
         toast.error(`Upload ${file.name} failed`);
@@ -87,6 +90,13 @@ const AdminPage = () => {
 
   return (
     <div>
+      <div className="fixed left-0 top-0">
+        <div className="ml-6 mt-6 rounded-full bg-slate-300 p-1">
+          <Link to={"/"}>
+            <IoMdArrowRoundBack fontSize={18} />
+          </Link>
+        </div>
+      </div>
       <div className="mt-6 flex justify-center">
         <div className="relative w-fit">
           <img src={bg} alt="bg" className="max-w-[300px]" />
