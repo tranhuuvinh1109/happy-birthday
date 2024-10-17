@@ -4,13 +4,16 @@ import Firework from "../../components/Firework";
 import Image from "../../components/Image";
 import bg from "../../assets/images/bg.png";
 import Confirm from "../../components/Confirm";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IS_OPEN } from "../../constant/common";
+import { onValue, ref } from "firebase/database";
+import { db } from "../../provider/Firebase";
 
 const HomePage = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const [isHidden, setIsHidden] = useState(false);
+  const [isShowForm, setIsShowForm] = useState(false);
 
   const togglePlay = () => {
     if (audioRef.current && !isHidden) {
@@ -25,8 +28,24 @@ const HomePage = () => {
     }
   };
 
+  useEffect(() => {
+    const dbRef = ref(db, "data/isShowForm");
+
+    const unsubscribe = onValue(dbRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setIsShowForm(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
-    <div className=" text-black">
+    <div className=" text-black" onClick={togglePlay}>
       <Container>
         <div className=" relative">
           <div className=" flex flex-col items-center justify-center gap-4 px-4 pb-4 pt-6">
@@ -42,7 +61,7 @@ const HomePage = () => {
           )}
 
           <AudioPlayer isHidden={isHidden} ref={audioRef} onClick={togglePlay} onEnded={handleEnded} />
-          <Confirm onClick={togglePlay} />
+          {isShowForm && <Confirm onClick={togglePlay} />}
           <Firework />
         </div>
       </Container>

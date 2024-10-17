@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase, push, ref } from "firebase/database";
+import { getDatabase, push, ref, set } from "firebase/database";
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const app = initializeApp({
   apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
@@ -13,7 +14,7 @@ const app = initializeApp({
 });
 
 export const firebaseAuth = getAuth(app);
-
+export const storage = getStorage(app);
 export const db = getDatabase(app);
 
 const addDataToFirebase = async (refPath: string, value: unknown) => {
@@ -26,6 +27,36 @@ const addDataToFirebase = async (refPath: string, value: unknown) => {
   }
 };
 
-export { addDataToFirebase };
+const setDataToFirebase = async (refPath: string, value: unknown) => {
+  const dbRef = ref(db, `data/${refPath}`);
+
+  try {
+    await set(dbRef, value);
+  } catch (error) {
+    console.error("Error adding data:", error);
+  }
+};
+
+const uploadImageToFirebase = async (file: File, folderPath: string): Promise<string | null> => {
+  if (!file) {
+    throw new Error("No file provided");
+  }
+
+  const fileRef = storageRef(storage, `${folderPath}/${file.name}`);
+
+  try {
+    const snapshot = await uploadBytes(fileRef, file);
+
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    console.log("File available at:", downloadURL);
+
+    return downloadURL;
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    return null;
+  }
+};
+
+export { addDataToFirebase, setDataToFirebase, uploadImageToFirebase };
 
 export default app;
