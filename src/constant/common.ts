@@ -18,50 +18,51 @@ export const IS_OPEN = true;
 export const ImageList: SlideItemType[] = [
   {
     image: baby1,
-    content: "baby1",
+    content: "🎉Chúc em tuổi mới thật hạnh phúc, luôn rạng rỡ và tươi vui như ánh mặt trời.🎊",
   },
   {
     image: baby2,
-    content: "baby2",
+    content: "🧨Sinh nhật vui vẻ, bạn! Mong mọi điều tốt đẹp nhất luôn bên bạn hôm nay và mãi mãi.✨",
   },
   {
     image: baby3,
-    content: "baby3",
-  },
-  {
-    image: baby4,
-    content: "baby4",
-  },
-  {
-    image: baby5,
-    content: "baby5",
-  },
-  {
-    image: baby6,
-    content: "baby6",
-  },
-  {
-    image: baby7,
-    content: "baby7",
-  },
-  {
-    image: baby8,
-    content: "baby8",
+    content: "🧨Sinh nhật năm nay, tôi mong bạn luôn được yêu thương và ấm áp, mãi là cô gái đáng yêu!💖",
   },
   {
     image: baby9,
-    content: "baby9",
+    content: "💖Gia đình luôn bên bạn.💝",
   },
   {
-    image: baby10,
-    content: "baby10",
+    image: baby4,
+    content: "🎁Chúc em tuổi mới nhiều trải nghiệm tuyệt vời, luôn được yêu thương và che chở.🎁",
   },
   {
-    image: baby11,
-    content: "baby11",
+    image: baby5,
+    content: "Đừng quên có tôi bên bạn nữa nhé 😊",
+  },
+  {
+    image: baby6,
+    content: "Chúc bạn học tốt, lụm học bổng và lấy được thưởng từ tôi 😁",
+  },
+  {
+    image: baby7,
+    content: "🦾Chúc bạn tuổi mới mạnh khỏe, luôn vui tươi🤗",
   },
   {
     image: baby12,
-    content: "baby12",
+    content: "Lướt sang đi dì Châm",
+  },
+  {
+    image: baby8,
+    content: "Tiếp →",
+  },
+
+  {
+    image: baby10,
+    content: "Tiếp →",
+  },
+  {
+    image: baby11,
+    content: "Tiếp →",
   },
 ];

@@ -36,8 +36,8 @@ const Image = () => {
                   alt={item.image}
                   className="max-h-[250px] w-full rounded-2xl object-cover sm:max-h-[300px]"
                 />
-                <div className="">
-                  <h1>{item.content}</h1>
+                <div className="px-2 text-base font-semibold">
+                  <h1 className="mt-2 text-center">{item.content}</h1>
                 </div>
               </div>
             </SwiperSlide>
@@ -66,7 +66,7 @@ const Image = () => {
           (item) =>
             ({
               image: item,
-              content: "",
+              content: "Tiếp → 💝",
             }) as SlideItemType
         );
         setListImage([...ImageList, ...additionalItem]);
@@ -84,6 +84,9 @@ const Image = () => {
       <Modal isOpen={isOpen} className="min-h-[550px] max-w-full" onClose={handleClose}>
         <div className="py-4">
           <img src={itemSelected?.image} alt={itemSelected?.image} className=" w-full rounded-lg object-cover" />
+          <div className="px-2 text-base font-semibold">
+            <h1 className="mt-2 text-center">{itemSelected?.content}</h1>
+          </div>
         </div>
       </Modal>
     </>
